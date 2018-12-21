@@ -2,10 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+
+    <!-- NuGet Metadata -->
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.0</PackageVersion>
+    <PackageId>Vlingo.UUID</PackageId>
+    <Authors>Vlingo</Authors>
+    <Description>
+      .NET implementation of UUID generation according to RFC4122 spec
+    </Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://mozilla.org/MPL/2.0/</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/vlingo-net/vlingo-net-uuid</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/vlingo-net/vlingo-net-uuid/master/vlingo-64x64.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/vlingo-net/vlingo-net-uuid</RepositoryUrl>
   </PropertyGroup>
-  <!--<ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-      <_Parameter1>Vlingo.UUID.Tests</_Parameter1>
-    </AssemblyAttribute>
-  </ItemGroup>-->
 </Project>
