@@ -18,8 +18,7 @@ namespace Vlingo.UUID
     /// </summary>
     public sealed class NameBasedGenerator : IDisposable
     {
-        private static readonly Guid[] NameSpaceGuids = new[]
-        {
+        private static readonly Guid[] NameSpaceGuids = {
             Guid.Empty,
             Guid.Parse("6ba7b810-9dad-11d1-80b4-00c04fd430c8"), // DNS
             Guid.Parse("6ba7b811-9dad-11d1-80b4-00c04fd430c8"), // URL
@@ -101,10 +100,7 @@ namespace Vlingo.UUID
 
         ~NameBasedGenerator()
         {
-            if (hashAlgorithm != null)
-            {
-                hashAlgorithm.Dispose();
-            }
+            hashAlgorithm?.Dispose();
         }
     }
 }
