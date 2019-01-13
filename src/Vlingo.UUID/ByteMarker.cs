@@ -11,8 +11,11 @@ namespace Vlingo.UUID
 {
     internal static class ByteMarker
     {
-        public const int VariantIndexPosition = 8, VariantMask = 0x3f, VariantBits = 0x80;
-        public const int VersionIndexPosition = 7, VersionMask = 0x0f;
+        private const int VariantIndexPosition = 8;
+        private const int VariantMask = 0x3f;
+        private const int VariantBits = 0x80;
+        private const int VersionIndexPosition = 7;
+        private const int VersionMask = 0x0f;
 
         /// <summary>
         /// Sets the first two bits of the 8th (0-based index) byte to binary '10'
