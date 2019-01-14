@@ -17,8 +17,8 @@ namespace Vlingo.UUID
     /// </summary>
     public sealed class TimeBasedGenerator
     {
-        private static readonly RandomNumberGenerator randomGenerator = new RNGCryptoServiceProvider();
-        private static readonly DateTimeOffset clockStart = new DateTimeOffset(1582, 10, 15, 0, 0, 0, TimeSpan.Zero);
+        private static readonly RandomNumberGenerator RandomGenerator = new RNGCryptoServiceProvider();
+        private static readonly DateTimeOffset ClockStart = new DateTimeOffset(1582, 10, 15, 0, 0, 0, TimeSpan.Zero);
 
         private readonly byte[] macAddressBytes;
         private readonly ReaderWriterLock rwLock;
@@ -37,7 +37,7 @@ namespace Vlingo.UUID
             lastClockSyncedAt = DateTimeOffset.UtcNow;
             rwLock = new ReaderWriterLock();
             mutex = new object();
-            currentClockSequenceBytes = GetRandomBytes(2, randomGenerator);
+            currentClockSequenceBytes = GetRandomBytes(2, RandomGenerator);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Vlingo.UUID
         /// If none is available, a pseudo-random number generator is used.
         /// </summary>
         public TimeBasedGenerator()
-            : this(GetIEEE802MACAddressBytes() ?? GetRandomBytes(6, randomGenerator))
+            : this(GetIEEE802MACAddressBytes() ?? GetRandomBytes(6, RandomGenerator))
         {
         }
 
@@ -80,22 +80,20 @@ namespace Vlingo.UUID
                 var clockSequenceData = ReadClockSequenceBytes();
                 return GenerateGuid(DateTimeOffset.UtcNow, clockSequenceData, macAddressBytes);
             }
-            else
+
+            var now = DateTimeOffset.UtcNow;
+            if (now <= lastClockSyncedAt)
             {
-                var now = DateTimeOffset.UtcNow;
-                if(now <= lastClockSyncedAt)
+                lock (mutex)
                 {
-                    lock (mutex)
+                    if (now <= lastClockSyncedAt)
                     {
-                        if(now <= lastClockSyncedAt)
-                        {
-                            UpdateClockSequenceBytes();
-                            lastClockSyncedAt = now;
-                        }
+                        UpdateClockSequenceBytes();
+                        lastClockSyncedAt = now;
                     }
                 }
-                return GenerateGuid(now, ReadClockSequenceBytes(), macAddressBytes);
             }
+            return GenerateGuid(now, ReadClockSequenceBytes(), macAddressBytes);
         }
 
         /// <summary>
@@ -126,7 +124,7 @@ namespace Vlingo.UUID
                 throw new ArgumentException($"{nameof(clockSequenceData)} must have 2 bytes.");
             }
 
-            var ticksSinceStart = (dateTime - clockStart).Ticks;
+            var ticksSinceStart = (dateTime - ClockStart).Ticks;
             var timestampBytes = BitConverter.GetBytes(ticksSinceStart);
 
             var data = new byte[16];
@@ -186,7 +184,7 @@ namespace Vlingo.UUID
             rwLock.AcquireWriterLock(Timeout.Infinite);
             try
             {
-                currentClockSequenceBytes = GetRandomBytes(2, randomGenerator);
+                currentClockSequenceBytes = GetRandomBytes(2, RandomGenerator);
             }
             finally
             {
@@ -222,7 +220,10 @@ namespace Vlingo.UUID
                     return physicalAddress.GetAddressBytes();
                 }
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+                // ignored
+            }
 
             return null;
         }
