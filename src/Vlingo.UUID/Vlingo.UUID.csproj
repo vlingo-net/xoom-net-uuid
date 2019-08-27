@@ -12,9 +12,12 @@
       .NET implementation of UUID generation according to RFC4122 spec
     </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageLicenseUrl>https://mozilla.org/MPL/2.0/</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/vlingo-net/vlingo-net-uuid</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/vlingo-net/vlingo-net-uuid/master/vlingo-64x64.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/vlingo-net/vlingo-net-uuid</RepositoryUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
 </Project>
