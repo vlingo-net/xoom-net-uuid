@@ -2,6 +2,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/930yr1mojead52ec?svg=true)](https://ci.appveyor.com/project/VlingoNetOwner/vlingo-net-uuid) 
 [![NuGet](https://img.shields.io/nuget/v/Vlingo.UUID.svg)](https://www.nuget.org/packages/Vlingo.UUID)
+[![Gitter](https://badges.gitter.im/vlingo-platform-net/community.svg)](https://gitter.im/vlingo-platform-net/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 .NET implementation of UUID generation according to [RFC4122](https://tools.ietf.org/html/rfc4122) spec.
 
