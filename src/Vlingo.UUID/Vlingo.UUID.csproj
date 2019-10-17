@@ -7,7 +7,7 @@
 
     <!-- NuGet Metadata -->
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>2.0.0</PackageVersion>
     <PackageId>Vlingo.UUID</PackageId>
     <Authors>Vlingo</Authors>
     <Description>
