@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
 
     <!-- NuGet Metadata -->
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>2.0.0</PackageVersion>
     <PackageId>Vlingo.UUID</PackageId>
     <Authors>Vlingo</Authors>
     <Description>
@@ -14,10 +16,11 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/vlingo-net/vlingo-net-uuid</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/vlingo-net/vlingo-net-uuid/master/vlingo-64x64.png</PackageIconUrl>
+    <PackageIcon>vlingo-64x64.png</PackageIcon>
     <RepositoryUrl>https://github.com/vlingo-net/vlingo-net-uuid</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="..\..\vlingo-64x64.png" Pack="true" PackagePath="\"/>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>

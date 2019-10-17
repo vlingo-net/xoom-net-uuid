@@ -26,7 +26,7 @@ namespace Vlingo.UUID
             Guid.Parse("6ba7b814-9dad-11d1-80b4-00c04fd430c8") // X500
         };
 
-        private HashAlgorithm hashAlgorithm;
+        private HashAlgorithm? hashAlgorithm;
         private readonly UUIDVersion version;
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Vlingo.UUID
             }
             Array.Copy(nameBytes, 0, data, nsBytes.Length, nameBytes.Length);
 
-            var result = hashAlgorithm
+            var result = hashAlgorithm!
                 .ComputeHash(data)
                 .TrimTo16Bytes()
                 .AddVariantMarker()
