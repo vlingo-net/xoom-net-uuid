@@ -7,10 +7,10 @@ skip_commits:
   message: /.*\[ci\-skip\].*/ 
 before_build:
   - dotnet restore src/Vlingo.UUID.sln
-build:
-  project: src/Vlingo.UUID.sln
-  verbosity: minimal
-  publish_nuget: true
+build_script:
+  - dotnet build src/Vlingo.UUID.sln --configuration Release --framework netstandard2.1 --verbosity minimal
+after_build:
+  - dotnet pack src/Vlingo.UUID/Vlingo.UUID.csproj --configuration Release --no-build
 test_script:
   - dotnet test src/Vlingo.UUID.Tests
 deploy:
