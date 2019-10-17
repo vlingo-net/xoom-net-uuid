@@ -6,8 +6,8 @@ jobs:
       mono: none
       env: DOTNETCORE=3
     - os: linux
-      mono: latest
-      env: MONO=latest
+      mdotnet: 2.2.402
+      mono: none
     - os: osx
       osx_image: xcode11
       dotnet: 3.0.100
@@ -15,25 +15,18 @@ jobs:
       env: DOTNETCORE=3
     - os: osx
       osx_image: xcode11
-      mono: latest
-      env: MONO=latest
+      dotnet: 2.2.402
+      mono: none
 sudo: false  # use the new container-based Travis infrastructure
-install:
-  - if [ "$MONO" = "latest" ]; then 
-      ls
-      nuget ./src/Vlingo.UUID.sln;
-      nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner;
-    fi
 script:
   - if [ "$DOTNETCORE" = "3" ]; then 
       dotnet restore ./src/Vlingo.UUID.sln;
       dotnet build ./src/Vlingo.UUID.sln;
       dotnet test ./src/Vlingo.UUID.Tests/Vlingo.UUID.Tests.csproj;
     else
-      cd src;
-      msbuild Vlingo.UUID.sln /p:Configuration=Release;
-      ls ./Vlingo.UUID.Tests/bin/Release;
-      mono ../testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./Vlingo.UUID.Tests/bin/Release/netcoreapp3.0/Vlingo.UUID.Tests.dll;
+      dotnet restore ./src/Vlingo.UUID.sln;
+      dotnet build ./src/Vlingo.UUID.sln;
+      dotnet test ./src/Vlingo.UUID.Tests/Vlingo.UUID.Tests.csproj;
     fi
 
 notifications:
