@@ -20,9 +20,9 @@ jobs:
 sudo: false  # use the new container-based Travis infrastructure
 install:
   - if [ "$MONO" = "latest" ]; then 
-      cd src;
-      nuget Vlingo.UUID.sln;
-      nuget install xunit.runners -Version 1.9.2 -OutputDirectory ../testrunner;
+      ls
+      nuget ./src/Vlingo.UUID.sln;
+      nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner;
     fi
 script:
   - if [ "$DOTNETCORE" = "3" ]; then 
