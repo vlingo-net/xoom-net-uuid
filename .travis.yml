@@ -31,7 +31,9 @@ script:
     else
       cd src
       msbuild Vlingo.UUID.sln /p:Configuration=Release
-      mono ../testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./Vlingo.UUID.Tests/bin/Release/Vlingo.UUID.Tests.dll;
+      mono ../testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./Vlingo.UUID.Tests/bin/Release/net40/Vlingo.UUID.Tests.dll;
+      mono ../testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./Vlingo.UUID.Tests/bin/Release/net45/Vlingo.UUID.Tests.dll;
+      mono ../testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./Vlingo.UUID.Tests/bin/Release/netstandard2.1/Vlingo.UUID.Tests.dll;
     fi
 
 notifications:
