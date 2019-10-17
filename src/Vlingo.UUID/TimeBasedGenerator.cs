@@ -199,7 +199,7 @@ namespace Vlingo.UUID
             return data;
         }
 
-        private static byte[] GetIEEE802MACAddressBytes()
+        private static byte[]? GetIEEE802MACAddressBytes()
         {
             try
             {
