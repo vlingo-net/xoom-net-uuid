@@ -6,7 +6,7 @@ jobs:
       mono: none
       env: DOTNETCORE=3
     - os: linux
-      mdotnet: 2.2.402
+      dotnet: 2.2.402
       mono: none
     - os: osx
       osx_image: xcode11
@@ -25,8 +25,9 @@ script:
       dotnet test ./src/Vlingo.UUID.Tests/Vlingo.UUID.Tests.csproj;
     else
       dotnet restore ./src/Vlingo.UUID.sln;
-      dotnet build ./src/Vlingo.UUID.sln;
-      dotnet test ./src/Vlingo.UUID.Tests/Vlingo.UUID.Tests.csproj;
+      dotnet build ./src/Vlingo.UUID/Vlingo.UUID.csproj -f netstandard2.1;
+      dotnet build ./src/Vlingo.UUID.Tests/Vlingo.UUID.Tests.csproj -f netcoreapp2.2;
+      dotnet test ./src/Vlingo.UUID.Tests/Vlingo.UUID.Tests.csproj -f netcoreapp2.2;
     fi
 
 notifications:
