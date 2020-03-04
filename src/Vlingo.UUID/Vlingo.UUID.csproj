@@ -18,6 +18,7 @@
     <PackageProjectUrl>https://github.com/vlingo-net/vlingo-net-uuid</PackageProjectUrl>
     <PackageIcon>vlingo-64x64.png</PackageIcon>
     <RepositoryUrl>https://github.com/vlingo-net/vlingo-net-uuid</RepositoryUrl>
+    <Configurations>Debug;Release;Debug With Project References</Configurations>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\vlingo-64x64.png" Pack="true" PackagePath="\" />
