@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <Configurations>Debug;Release;Debug With Project References</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
