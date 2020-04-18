@@ -73,9 +73,9 @@ namespace Vlingo.UUID
         /// <param name="mode">Use <c>UUIDGenerationMode.FasterGeneration</c> for faster UUID generation, without synchronizing the system clock. 
         /// Use <c>UUIDGenerationMode.WithUniquenessGuarantee</c> to synchronize system clock. Later approach may be slower than the former one.</param>
         /// <returns></returns>
-        public Guid GenerateGuid(UUIDGenerationMode mode)
+        public Guid GenerateGuid(GuidGenerationMode mode)
         {
-            if (mode == UUIDGenerationMode.FasterGeneration)
+            if (mode == GuidGenerationMode.FasterGeneration)
             {
                 var clockSequenceData = ReadClockSequenceBytes();
                 return GenerateGuid(DateTimeOffset.UtcNow, clockSequenceData, macAddressBytes);
@@ -100,7 +100,7 @@ namespace Vlingo.UUID
         /// Generates a RFC4122 time based UUID in <c>UUIDGenerationMode.FasterGeneration</c> mode.
         /// </summary>
         /// <returns></returns>
-        public Guid GenerateGuid() => GenerateGuid(UUIDGenerationMode.FasterGeneration);
+        public Guid GenerateGuid() => GenerateGuid(GuidGenerationMode.FasterGeneration);
 
         private static Guid GenerateGuid(DateTimeOffset dateTime, byte[] clockSequenceData, byte[] macAddressBytes)
         {

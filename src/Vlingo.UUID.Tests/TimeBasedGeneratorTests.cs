@@ -12,9 +12,9 @@ namespace Vlingo.UUID.Tests
     public class TimeBasedGeneratorTests
     {
         [Theory]
-        [InlineData(UUIDGenerationMode.FasterGeneration)]
-        [InlineData(UUIDGenerationMode.WithUniquenessGuarantee)]
-        public void GeneratedUUID_ShouldHaveProperVersion(UUIDGenerationMode mode)
+        [InlineData(GuidGenerationMode.FasterGeneration)]
+        [InlineData(GuidGenerationMode.WithUniquenessGuarantee)]
+        public void GeneratedUUID_ShouldHaveProperVersion(GuidGenerationMode mode)
         {
             var generator = new TimeBasedGenerator();
             var expectedVersion = 0x10;

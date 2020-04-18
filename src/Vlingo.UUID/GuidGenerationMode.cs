@@ -8,7 +8,7 @@
 
 namespace Vlingo.UUID
 {
-    public enum UUIDGenerationMode
+    public enum GuidGenerationMode
     {
         FasterGeneration = 1,
         WithUniquenessGuarantee = 2
