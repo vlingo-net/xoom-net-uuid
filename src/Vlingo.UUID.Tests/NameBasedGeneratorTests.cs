@@ -13,14 +13,14 @@ namespace Vlingo.UUID.Tests
     public class NameBasedGeneratorTests
     {
         [Theory]
-        [InlineData(HashType.MD5)]
-        [InlineData(HashType.SHA1)]
+        [InlineData(HashType.Md5)]
+        [InlineData(HashType.Sha1)]
         public void GeneratedUUID_ShouldHaveProperVersion(HashType hashType)
         {
             var name = Guid.NewGuid().ToString();
             var nameSpace = Guid.NewGuid();
 
-            var expectedVersion = hashType == HashType.MD5 ? 0x30 : 0x50;
+            var expectedVersion = hashType == HashType.Md5 ? 0x30 : 0x50;
 
             using (var generator = new NameBasedGenerator(hashType))
             {
@@ -33,16 +33,16 @@ namespace Vlingo.UUID.Tests
         }
 
         [Theory]
-        [InlineData(HashType.MD5, UUIDNameSpace.None)]
-        [InlineData(HashType.MD5, UUIDNameSpace.DNS)]
-        [InlineData(HashType.MD5, UUIDNameSpace.OID)]
-        [InlineData(HashType.MD5, UUIDNameSpace.URL)]
-        [InlineData(HashType.MD5, UUIDNameSpace.X500)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.None)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.DNS)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.OID)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.URL)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.X500)]
+        [InlineData(HashType.Md5, UUIDNameSpace.None)]
+        [InlineData(HashType.Md5, UUIDNameSpace.Dns)]
+        [InlineData(HashType.Md5, UUIDNameSpace.Oid)]
+        [InlineData(HashType.Md5, UUIDNameSpace.Url)]
+        [InlineData(HashType.Md5, UUIDNameSpace.X500)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.None)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.Dns)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.Oid)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.Url)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.X500)]
         public void UUIDGenerated_InSameNameAndNameSpace_InDifferentTimes_ShouldBeSame(HashType hashType, UUIDNameSpace nameSpace)
         {
             var name = Guid.NewGuid().ToString();
@@ -56,16 +56,16 @@ namespace Vlingo.UUID.Tests
         }
 
         [Theory]
-        [InlineData(HashType.MD5, UUIDNameSpace.None)]
-        [InlineData(HashType.MD5, UUIDNameSpace.DNS)]
-        [InlineData(HashType.MD5, UUIDNameSpace.OID)]
-        [InlineData(HashType.MD5, UUIDNameSpace.URL)]
-        [InlineData(HashType.MD5, UUIDNameSpace.X500)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.None)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.DNS)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.OID)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.URL)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.X500)]
+        [InlineData(HashType.Md5, UUIDNameSpace.None)]
+        [InlineData(HashType.Md5, UUIDNameSpace.Dns)]
+        [InlineData(HashType.Md5, UUIDNameSpace.Oid)]
+        [InlineData(HashType.Md5, UUIDNameSpace.Url)]
+        [InlineData(HashType.Md5, UUIDNameSpace.X500)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.None)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.Dns)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.Oid)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.Url)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.X500)]
         public void UUIDGenerated_InSameNameSpace_WithDifferentNames_ShouldBeDifferent(HashType hashType, UUIDNameSpace nameSpace)
         {
             var firstName = Guid.NewGuid().ToString();
@@ -80,14 +80,14 @@ namespace Vlingo.UUID.Tests
         }
 
         [Theory]
-        [InlineData(HashType.MD5, UUIDNameSpace.DNS, UUIDNameSpace.None)]
-        [InlineData(HashType.MD5, UUIDNameSpace.None, UUIDNameSpace.OID)]
-        [InlineData(HashType.MD5, UUIDNameSpace.OID, UUIDNameSpace.URL)]
-        [InlineData(HashType.MD5, UUIDNameSpace.URL, UUIDNameSpace.X500)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.DNS, UUIDNameSpace.None)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.None, UUIDNameSpace.OID)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.OID, UUIDNameSpace.URL)]
-        [InlineData(HashType.SHA1, UUIDNameSpace.URL, UUIDNameSpace.X500)]
+        [InlineData(HashType.Md5, UUIDNameSpace.Dns, UUIDNameSpace.None)]
+        [InlineData(HashType.Md5, UUIDNameSpace.None, UUIDNameSpace.Oid)]
+        [InlineData(HashType.Md5, UUIDNameSpace.Oid, UUIDNameSpace.Url)]
+        [InlineData(HashType.Md5, UUIDNameSpace.Url, UUIDNameSpace.X500)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.Dns, UUIDNameSpace.None)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.None, UUIDNameSpace.Oid)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.Oid, UUIDNameSpace.Url)]
+        [InlineData(HashType.Sha1, UUIDNameSpace.Url, UUIDNameSpace.X500)]
         public void UUIDGenerated_InWithSameName_InDifferentStandardNameSpace_ShouldBeDifferent(
             HashType hashType, 
             UUIDNameSpace firstNs, 
@@ -104,8 +104,8 @@ namespace Vlingo.UUID.Tests
         }
 
         [Theory]
-        [InlineData(HashType.MD5)]
-        [InlineData(HashType.SHA1)]
+        [InlineData(HashType.Md5)]
+        [InlineData(HashType.Sha1)]
         public void UUIDGenerated_InWithSameName_InDifferentCustomNameSpace_ShouldBeDifferent(HashType hashType)
         {
             var name = Guid.NewGuid().ToString();

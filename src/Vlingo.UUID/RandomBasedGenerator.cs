@@ -15,7 +15,7 @@ namespace Vlingo.UUID
     /// </summary>
     public class RandomBasedGenerator
     {
-        private readonly RandomNumberGenerator generator;
+        private readonly RandomNumberGenerator _generator;
 
         /// <summary>
         /// Creates an instance of random number based UUID generator according to RFC4122 (version-4) using the provided random number generator.
@@ -23,7 +23,7 @@ namespace Vlingo.UUID
         /// <param name="generator">The random number generator.</param>
         public RandomBasedGenerator(RandomNumberGenerator generator)
         {
-            this.generator = generator;
+            _generator = generator;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Vlingo.UUID
         public Guid GenerateGuid()
         {
             var data = new byte[16];
-            generator.GetBytes(data);
+            _generator.GetBytes(data);
 
             data.AddVariantMarker().AddVersionMarker(UUIDVersion.Random);
 

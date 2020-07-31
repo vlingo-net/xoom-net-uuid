@@ -9,7 +9,7 @@ namespace Vlingo.UUID
 {
     public enum HashType
     {
-        MD5 = 1,
-        SHA1 = 2
+        Md5 = 1,
+        Sha1 = 2
     }
 }

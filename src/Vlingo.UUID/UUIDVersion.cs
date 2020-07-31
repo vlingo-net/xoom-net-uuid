@@ -7,6 +7,7 @@
 
 namespace Vlingo.UUID
 {
+    // ReSharper disable once InconsistentNaming
     internal enum UUIDVersion
     {
         TimeBased = 0x10,

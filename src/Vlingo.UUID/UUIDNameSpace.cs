@@ -8,12 +8,13 @@
 
 namespace Vlingo.UUID
 {
+    // ReSharper disable once InconsistentNaming
     public enum UUIDNameSpace
     {
         None = 0,
-        DNS = 1,
-        URL = 2,
-        OID = 3,
+        Dns = 1,
+        Url = 2,
+        Oid = 3,
         X500 = 4
     }
 }

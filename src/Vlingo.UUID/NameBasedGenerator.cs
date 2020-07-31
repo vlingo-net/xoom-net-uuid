@@ -26,8 +26,8 @@ namespace Vlingo.UUID
             Guid.Parse("6ba7b814-9dad-11d1-80b4-00c04fd430c8") // X500
         };
 
-        private HashAlgorithm? hashAlgorithm;
-        private readonly UUIDVersion version;
+        private HashAlgorithm? _hashAlgorithm;
+        private readonly UUIDVersion _version;
 
         /// <summary>
         /// Creates an instance of name based RFC4122 UUID generator. 
@@ -36,15 +36,15 @@ namespace Vlingo.UUID
         /// <param name="hashType">Hashing algorithm type be used (MD5 or SHA-1)</param>
         public NameBasedGenerator(HashType hashType)
         {
-            hashAlgorithm = hashType == HashType.MD5 ? (HashAlgorithm)MD5.Create() : SHA1.Create();
-            version = hashType == HashType.MD5 ? UUIDVersion.NameBasedWithMd5 : UUIDVersion.NamedBasedWithSha1;
+            _hashAlgorithm = hashType == HashType.Md5 ? (HashAlgorithm)MD5.Create() : SHA1.Create();
+            _version = hashType == HashType.Md5 ? UUIDVersion.NameBasedWithMd5 : UUIDVersion.NamedBasedWithSha1;
         }
 
         /// <summary>
         /// Creates an instance of name based RFC4122 UUID Version-3 generator, using MD5 hashing.
         /// </summary>
         public NameBasedGenerator()
-            : this(HashType.MD5)
+            : this(HashType.Md5)
         {
         }
 
@@ -80,27 +80,27 @@ namespace Vlingo.UUID
             }
             Array.Copy(nameBytes, 0, data, nsBytes.Length, nameBytes.Length);
 
-            var result = hashAlgorithm!
+            var result = _hashAlgorithm!
                 .ComputeHash(data)
                 .TrimTo16Bytes()
                 .AddVariantMarker()
-                .AddVersionMarker(version);
+                .AddVersionMarker(_version);
 
             return new Guid(result);
         }
 
         public void Dispose()
         {
-            if (hashAlgorithm != null)
+            if (_hashAlgorithm != null)
             {
-                hashAlgorithm.Dispose();
-                hashAlgorithm = null;
+                _hashAlgorithm.Dispose();
+                _hashAlgorithm = null;
             }
         }
 
         ~NameBasedGenerator()
         {
-            hashAlgorithm?.Dispose();
+            _hashAlgorithm?.Dispose();
         }
     }
 }

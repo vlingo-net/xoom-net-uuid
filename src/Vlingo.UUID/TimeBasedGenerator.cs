@@ -20,12 +20,12 @@ namespace Vlingo.UUID
         private static readonly RandomNumberGenerator RandomGenerator = new RNGCryptoServiceProvider();
         private static readonly DateTimeOffset ClockStart = new DateTimeOffset(1582, 10, 15, 0, 0, 0, TimeSpan.Zero);
 
-        private readonly byte[] macAddressBytes;
-        private readonly ReaderWriterLock rwLock;
-        private readonly object mutex;
+        private readonly byte[] _macAddressBytes;
+        private readonly ReaderWriterLock _rwLock;
+        private readonly object _mutex;
 
-        private DateTimeOffset lastClockSyncedAt;
-        private byte[] currentClockSequenceBytes;
+        private DateTimeOffset _lastClockSyncedAt;
+        private byte[] _currentClockSequenceBytes;
 
         /// <summary>
         /// Creates an instance of RFC4122 time based UUID generator, using the IEEE 802 MAC address (6 bytes) provided as node. 
@@ -33,11 +33,11 @@ namespace Vlingo.UUID
         /// <param name="macAddressBytes">6 bytes IEEE 802 MAC address to use as node</param>
         public TimeBasedGenerator(byte[] macAddressBytes)
         {
-            this.macAddressBytes = macAddressBytes;
-            lastClockSyncedAt = DateTimeOffset.UtcNow;
-            rwLock = new ReaderWriterLock();
-            mutex = new object();
-            currentClockSequenceBytes = GetRandomBytes(2, RandomGenerator);
+            _macAddressBytes = macAddressBytes;
+            _lastClockSyncedAt = DateTimeOffset.UtcNow;
+            _rwLock = new ReaderWriterLock();
+            _mutex = new object();
+            _currentClockSequenceBytes = GetRandomBytes(2, RandomGenerator);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Vlingo.UUID
         /// <param name="dateTimeOffset">The DateTimeOffset to generate UUID on.</param>
         /// <returns></returns>
         public Guid GenerateGuid(DateTimeOffset dateTimeOffset)
-            => GenerateGuid(dateTimeOffset, GetClockSequenceData(dateTimeOffset.ToUniversalTime().Ticks), macAddressBytes);
+            => GenerateGuid(dateTimeOffset, GetClockSequenceData(dateTimeOffset.ToUniversalTime().Ticks), _macAddressBytes);
 
         /// <summary>
         /// Generates RFC4122 time based UUID based on the <paramref name="dateTime"/> provided. 
@@ -78,22 +78,22 @@ namespace Vlingo.UUID
             if (mode == GuidGenerationMode.FasterGeneration)
             {
                 var clockSequenceData = ReadClockSequenceBytes();
-                return GenerateGuid(DateTimeOffset.UtcNow, clockSequenceData, macAddressBytes);
+                return GenerateGuid(DateTimeOffset.UtcNow, clockSequenceData, _macAddressBytes);
             }
 
             var now = DateTimeOffset.UtcNow;
-            if (now <= lastClockSyncedAt)
+            if (now <= _lastClockSyncedAt)
             {
-                lock (mutex)
+                lock (_mutex)
                 {
-                    if (now <= lastClockSyncedAt)
+                    if (now <= _lastClockSyncedAt)
                     {
                         UpdateClockSequenceBytes();
-                        lastClockSyncedAt = now;
+                        _lastClockSyncedAt = now;
                     }
                 }
             }
-            return GenerateGuid(now, ReadClockSequenceBytes(), macAddressBytes);
+            return GenerateGuid(now, ReadClockSequenceBytes(), _macAddressBytes);
         }
 
         /// <summary>
@@ -168,27 +168,27 @@ namespace Vlingo.UUID
 
         private byte[] ReadClockSequenceBytes()
         {
-            rwLock.AcquireReaderLock(Timeout.Infinite);
+            _rwLock.AcquireReaderLock(Timeout.Infinite);
             try
             {
-                return new[] { currentClockSequenceBytes[0], currentClockSequenceBytes[1] };
+                return new[] { _currentClockSequenceBytes[0], _currentClockSequenceBytes[1] };
             }
             finally
             {
-                rwLock.ReleaseReaderLock();
+                _rwLock.ReleaseReaderLock();
             }
         }
 
         private void UpdateClockSequenceBytes()
         {
-            rwLock.AcquireWriterLock(Timeout.Infinite);
+            _rwLock.AcquireWriterLock(Timeout.Infinite);
             try
             {
-                currentClockSequenceBytes = GetRandomBytes(2, RandomGenerator);
+                _currentClockSequenceBytes = GetRandomBytes(2, RandomGenerator);
             }
             finally
             {
-                rwLock.ReleaseWriterLock();
+                _rwLock.ReleaseWriterLock();
             }
         }
 
@@ -199,6 +199,7 @@ namespace Vlingo.UUID
             return data;
         }
 
+        // ReSharper disable once InconsistentNaming
         private static byte[]? GetIEEE802MACAddressBytes()
         {
             try
