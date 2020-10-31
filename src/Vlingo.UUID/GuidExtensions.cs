@@ -40,10 +40,29 @@ namespace Vlingo.UUID
             ChangeGuidByteOrders(array);
             return new Guid(array);
         }
+        
+        public static long ToLeastSignificantBits(this Guid id)
+        {
+            var bytes = id.ToByteArray();
+            var boolArray = new bool[bytes.Length];
+            for(var i = 0; i < bytes.Length; i++)
+            {
+                boolArray[i] = GetBit(bytes[i]);
+            }
+
+            return BitConverter.ToInt64(bytes, 0);
+        }
+        
+        public static Guid ToGuid(this long id)
+        {
+            var bytes = new byte[16];
+            BitConverter.GetBytes(id).CopyTo(bytes, 0);
+            return new Guid(bytes);
+        }
 
         /// <summary>
         /// Swaps bytes in positions as:
-        /// 0 <-> 3, 1 <-> 2, 4 <-> 5, 6 <-> 7
+        /// <![CDATA[0 <-> 3, 1 <-> 2, 4 <-> 5, 6 <-> 7]]>
         /// </summary>
         /// <param name="array"></param>
         private static void ChangeGuidByteOrders(byte[] array)
@@ -64,7 +83,7 @@ namespace Vlingo.UUID
             array[6] = array[7];
             array[7] = temp;
         }
-        
+
         private static bool GetBit(byte b) => (b & 1) != 0;
     }
 }
