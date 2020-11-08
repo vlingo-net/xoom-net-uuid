@@ -71,7 +71,7 @@ namespace Vlingo.UUID
         /// <returns>RFC4122 UUID generated using the <paramref name="customNamespaceGuid"/> and the <paramref name="name"/></returns>
         public Guid GenerateGuid(Guid customNamespaceGuid, string name)
         {
-            var nsBytes = Guid.Empty == customNamespaceGuid ? new byte[0] : customNamespaceGuid.ToByteArray();
+            var nsBytes = Guid.Empty == customNamespaceGuid ? new byte[0] : customNamespaceGuid.ToActuallyOrderedBytes();
             var nameBytes = Encoding.UTF8.GetBytes(name);
             var data = new byte[nsBytes.Length + nameBytes.Length];
             if(nsBytes.Length > 0)
@@ -86,7 +86,7 @@ namespace Vlingo.UUID
                 .AddVariantMarker()
                 .AddVersionMarker(_version);
 
-            return new Guid(result);
+            return result.ToGuidFromActuallyOrderedBytes();
         }
 
         public void Dispose()

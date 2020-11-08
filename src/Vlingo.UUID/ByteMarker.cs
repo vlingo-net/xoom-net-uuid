@@ -14,7 +14,7 @@ namespace Vlingo.UUID
         private const int VariantIndexPosition = 8;
         private const int VariantMask = 0x3f;
         private const int VariantBits = 0x80;
-        private const int VersionIndexPosition = 7;
+        private const int VersionIndexPosition = 6;
         private const int VersionMask = 0x0f;
 
         /// <summary>

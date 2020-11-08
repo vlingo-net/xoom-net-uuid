@@ -152,7 +152,7 @@ namespace Vlingo.UUID
 
             data.AddVariantMarker().AddVersionMarker(UUIDVersion.TimeBased);
 
-            return new Guid(data);
+            return data.ToGuidFromActuallyOrderedBytes();
         }
 
         private static byte[] GetClockSequenceData(long ticks)

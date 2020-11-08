@@ -26,9 +26,9 @@ namespace Vlingo.UUID.Tests
             {
                 var guid = generator.GenerateGuid(nameSpace, name);
 
-                var array = guid.ToByteArray();
+                var array = guid.ToActuallyOrderedBytes();
 
-                Assert.Equal(expectedVersion, array[7] & 0xf0);
+                Assert.Equal(expectedVersion, array[6] & 0xf0);
             }
         }
 
@@ -119,6 +119,20 @@ namespace Vlingo.UUID.Tests
 
                 Assert.NotEqual(first, second);
             }
+        }
+
+        [Fact]
+        public void UUIDGenerated_ShouldGenerateProperNamebasedGuid_ForCustomNamespaceAndName()
+        {
+            // bugfix for issue: https://github.com/vlingo-net/vlingo-net-uuid/issues/7
+
+            var uuidNamespace = Guid.Parse("a4405a8d-8bb2-467a-bbc3-961ab93bb538");
+            var name = "9912310000";
+
+            var generator = new NameBasedGenerator(HashType.Sha1);
+            var uuidV5 = generator.GenerateGuid(uuidNamespace, name);
+
+            Assert.Equal("a045c4bc-d81c-5fc4-88bd-313db5b2d1fc", uuidV5.ToString());
         }
     }
 }

@@ -20,9 +20,9 @@ namespace Vlingo.UUID.Tests
             var expectedVersion = 0x10;
 
             var guid = generator.GenerateGuid(mode);
-            var array = guid.ToByteArray();
+            var array = guid.ToActuallyOrderedBytes();
 
-            Assert.Equal(expectedVersion, array[7] & 0xf0);
+            Assert.Equal(expectedVersion, array[6] & 0xf0);
         }
     }
 }
