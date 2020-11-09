@@ -6,6 +6,7 @@
 // one at https://mozilla.org/MPL/2.0/.
 
 using System;
+using System.Linq;
 
 namespace Vlingo.UUID
 {
@@ -44,6 +45,7 @@ namespace Vlingo.UUID
         public static long ToLeastSignificantBits(this Guid id)
         {
             var bytes = id.ToByteArray();
+            ChangeGuidByteOrders(bytes);
             var boolArray = new bool[bytes.Length];
             for(var i = 0; i < bytes.Length; i++)
             {
@@ -55,9 +57,10 @@ namespace Vlingo.UUID
         
         public static Guid ToGuid(this long id)
         {
-            var bytes = new byte[16];
-            BitConverter.GetBytes(id).CopyTo(bytes, 0);
-            return new Guid(bytes);
+            var data = new byte[16];
+            var sourceArray = BitConverter.GetBytes(id);
+            Array.Copy(sourceArray, data, sourceArray.Length);
+            return ToGuidFromActuallyOrderedBytes(data);
         }
 
         /// <summary>
