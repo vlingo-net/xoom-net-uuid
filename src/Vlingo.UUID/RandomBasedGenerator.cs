@@ -45,7 +45,7 @@ namespace Vlingo.UUID
 
             data.AddVariantMarker().AddVersionMarker(UUIDVersion.Random);
 
-            return new Guid(data);
+            return data.ToGuidFromActuallyOrderedBytes();
         }
     }
 }
