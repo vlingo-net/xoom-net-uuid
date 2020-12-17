@@ -23,8 +23,8 @@ jobs:
     - name: List Directory
       run: ls -R
     - name: Restore dependencies
-      run: dotnet restore src/Vlingo.Wire.sln
+      run: dotnet restore ./src/Vlingo.UUID.sln
     - name: Build
-      run: dotnet build src/Vlingo.Wire.sln --no-restore
+      run: dotnet build ./src/Vlingo.UUID.sln --no-restore
     - name: Test
-      run: dotnet test src/Vlingo.Wire.Tests/Vlingo.Wire.Tests.csproj --no-build --verbosity normal
+      run: dotnet test ./src/Vlingo.UUID.Tests/Vlingo.UUID.Tests.csproj --no-build --verbosity normal
