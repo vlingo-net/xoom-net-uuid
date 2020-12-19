@@ -28,3 +28,7 @@ jobs:
       run: dotnet build ./src/Vlingo.UUID.sln --no-restore
     - name: Test
       run: dotnet test ./src/Vlingo.UUID.Tests/Vlingo.UUID.Tests.csproj --no-build --verbosity normal
+    - name: Slack Notify
+      uses: rtCamp/action-slack-notify@v2.1.2
+      env:
+        SLACK_WEBHOOK: Hzazkm0/Y662bxB1lswkyOsvvah9V4b/yrjCvlZUKe1h+1uq3oKIaY5lTcIt9TFHlCMuj7pjHE3Lxni/Un7a+uv5Ak6N/NFd138hBhsvDG1J8iAUvQD3EQnbV5A53co8ycmKLvSmtiJSQ2AMN1yjgk1DyRpVPgC+tnRJGitda69UeRccjm7BSoBWmBZwu+VNvNSvwBd4kzQmYFWidUpmzCZ2GbKga7CffsozEl25HLaAdMhZYZAf9k8qQPDY1zCi8g+dQ1Yoh5kNiqGy8ypw3g5JZY0IybeRsmPNLPo7U5p3EqYfFkUBPZ0kWO7N3vKZ8XnNwYNhYD33uIpy9vRvZZCrnbHp5y1Iy8eDn05N7P8IAvccJDOxj1e9bhIyuMhsl1tqZREmnSeSVSHiaXnR1ZmmoVcnMVXKS50IZ5LeTZIK5Wcfx6B4iB1H1IOSsnnU9FlVl/ageGNPqOPf5oYXWin0bYENg23DSbsEyL72+6ABp5M8e9gH6Ai8Y0TYGkkfPC69agE+f02kwa6XwAToxHZ4YVqJtXGssLPd19EQrKnE8O48e3VFky1Nk7y+ypAxr3Eu8+HMOKE02jvATZsjmZVlq6S1V3wZKRT/xJuu33Rm4eVoRSdwFzNKSPJzpY9XnTrjJrwef9UYcSUDDWneTU00fV2H2psKmDtPyWqhfcM=
