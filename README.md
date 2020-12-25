@@ -1,6 +1,7 @@
 # vlingo-net-uuid
 
-[![Build status](https://ci.appveyor.com/api/projects/status/930yr1mojead52ec?svg=true)](https://ci.appveyor.com/project/VlingoNetOwner/vlingo-net-uuid) 
+[![Build status](https://ci.appveyor.com/api/projects/status/930yr1mojead52ec?svg=true)](https://ci.appveyor.com/project/VlingoNetOwner/vlingo-net-uuid)
+![Build master](https://github.com/vlingo-net/vlingo-net-uuid/workflows/.NET/badge.svg)
 [![NuGet](https://img.shields.io/nuget/v/Vlingo.UUID.svg)](https://www.nuget.org/packages/Vlingo.UUID)
 [![Gitter](https://badges.gitter.im/vlingo-platform-net/community.svg)](https://gitter.im/vlingo-platform-net/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
