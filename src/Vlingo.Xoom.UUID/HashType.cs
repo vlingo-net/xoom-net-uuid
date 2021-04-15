@@ -5,16 +5,11 @@
 // was not distributed with this file, You can obtain
 // one at https://mozilla.org/MPL/2.0/.
 
-
-namespace Vlingo.UUID
+namespace Vlingo.Xoom.UUID
 {
-    // ReSharper disable once InconsistentNaming
-    public enum UUIDNameSpace
+    public enum HashType
     {
-        None = 0,
-        Dns = 1,
-        Url = 2,
-        Oid = 3,
-        X500 = 4
+        Md5 = 1,
+        Sha1 = 2
     }
 }

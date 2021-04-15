@@ -7,7 +7,7 @@
 
 using System;
 
-namespace Vlingo.UUID
+namespace Vlingo.Xoom.UUID
 {
     internal static class ByteMarker
     {

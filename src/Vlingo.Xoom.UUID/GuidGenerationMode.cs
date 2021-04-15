@@ -5,11 +5,12 @@
 // was not distributed with this file, You can obtain
 // one at https://mozilla.org/MPL/2.0/.
 
-namespace Vlingo.UUID
+
+namespace Vlingo.Xoom.UUID
 {
-    public enum HashType
+    public enum GuidGenerationMode
     {
-        Md5 = 1,
-        Sha1 = 2
+        FasterGeneration = 1,
+        WithUniquenessGuarantee = 2
     }
 }

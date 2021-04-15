@@ -8,7 +8,7 @@
 using System;
 using Xunit;
 
-namespace Vlingo.UUID.Tests
+namespace Vlingo.Xoom.UUID.Tests
 {
     public class NameBasedGeneratorTests
     {

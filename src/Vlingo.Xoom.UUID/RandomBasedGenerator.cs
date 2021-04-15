@@ -8,7 +8,7 @@
 using System;
 using System.Security.Cryptography;
 
-namespace Vlingo.UUID
+namespace Vlingo.Xoom.UUID
 {
     /// <summary>
     /// Random number based UUID generator according to RFC4122 (version-4)
@@ -21,10 +21,7 @@ namespace Vlingo.UUID
         /// Creates an instance of random number based UUID generator according to RFC4122 (version-4) using the provided random number generator.
         /// </summary>
         /// <param name="generator">The random number generator.</param>
-        public RandomBasedGenerator(RandomNumberGenerator generator)
-        {
-            _generator = generator;
-        }
+        public RandomBasedGenerator(RandomNumberGenerator generator) => _generator = generator;
 
         /// <summary>
         /// Creates an instance of random number based UUID generator according to RFC4122 (version-4). 

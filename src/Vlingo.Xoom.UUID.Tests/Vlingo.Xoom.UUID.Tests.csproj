@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Vlingo.UUID\Vlingo.UUID.csproj" />
+    <ProjectReference Include="..\Vlingo.Xoom.UUID\Vlingo.Xoom.UUID.csproj" />
   </ItemGroup>
 
 </Project>

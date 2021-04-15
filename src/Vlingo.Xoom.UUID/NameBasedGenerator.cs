@@ -9,7 +9,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Vlingo.UUID
+namespace Vlingo.Xoom.UUID
 {
     /// <summary>
     /// Name based UUID generator according to RFC4122.

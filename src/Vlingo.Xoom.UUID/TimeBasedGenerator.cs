@@ -10,7 +10,7 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Threading;
 
-namespace Vlingo.UUID
+namespace Vlingo.Xoom.UUID
 {
     /// <summary>
     /// Time based UUID (Version-1) generator according to RFC4122.

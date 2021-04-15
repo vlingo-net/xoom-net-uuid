@@ -6,9 +6,8 @@
 // one at https://mozilla.org/MPL/2.0/.
 
 using System;
-using System.Linq;
 
-namespace Vlingo.UUID
+namespace Vlingo.Xoom.UUID
 {
     public static class GuidExtensions
     {

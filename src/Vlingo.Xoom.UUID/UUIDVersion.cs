@@ -5,12 +5,14 @@
 // was not distributed with this file, You can obtain
 // one at https://mozilla.org/MPL/2.0/.
 
-
-namespace Vlingo.UUID
+namespace Vlingo.Xoom.UUID
 {
-    public enum GuidGenerationMode
+    // ReSharper disable once InconsistentNaming
+    internal enum UUIDVersion
     {
-        FasterGeneration = 1,
-        WithUniquenessGuarantee = 2
+        TimeBased = 0x10,
+        NameBasedWithMd5 = 0x30,
+        Random = 0x40,
+        NamedBasedWithSha1 = 0x50
     }
 }

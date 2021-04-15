@@ -8,16 +8,16 @@
     <!-- NuGet Metadata -->
     <IsPackable>true</IsPackable>
     <PackageVersion>$(VlingoVersion)</PackageVersion>
-    <PackageId>Vlingo.UUID</PackageId>
+    <PackageId>Vlingo.Xoom.UUID</PackageId>
     <Authors>Vlingo</Authors>
     <Description>
       .NET implementation of UUID generation according to RFC4122 spec
     </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/vlingo-net/vlingo-net-uuid</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/vlingo-net/xoom-net-uuid</PackageProjectUrl>
     <PackageIcon>vlingo-64x64.png</PackageIcon>
-    <RepositoryUrl>https://github.com/vlingo-net/vlingo-net-uuid</RepositoryUrl>
+    <RepositoryUrl>https://github.com/vlingo-net/xoom-net-uuid</RepositoryUrl>
     <Configurations>Debug;Release;Debug With Project References</Configurations>
   </PropertyGroup>
   <ItemGroup>
