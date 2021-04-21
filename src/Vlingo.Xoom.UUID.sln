@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlingo.UUID", "Vlingo.UUID\Vlingo.UUID.csproj", "{D3361751-1B20-40CC-8C63-C08EFF64DB21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlingo.Xoom.UUID", "Vlingo.Xoom.UUID\Vlingo.Xoom.UUID.csproj", "{D3361751-1B20-40CC-8C63-C08EFF64DB21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlingo.UUID.Tests", "Vlingo.UUID.Tests\Vlingo.UUID.Tests.csproj", "{A5E124ED-6418-4F2F-B08A-3E0129E44233}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlingo.Xoom.UUID.Tests", "Vlingo.Xoom.UUID.Tests\Vlingo.Xoom.UUID.Tests.csproj", "{A5E124ED-6418-4F2F-B08A-3E0129E44233}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
