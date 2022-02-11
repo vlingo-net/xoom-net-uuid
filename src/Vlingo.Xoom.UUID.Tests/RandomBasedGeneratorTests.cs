@@ -7,20 +7,19 @@
 
 using Xunit;
 
-namespace Vlingo.Xoom.UUID.Tests
+namespace Vlingo.Xoom.UUID.Tests;
+
+public class RandomBasedGeneratorTests
 {
-    public class RandomBasedGeneratorTests
+    [Fact]
+    public void GeneratedUUID_ShouldHaveProperVersion()
     {
-        [Fact]
-        public void GeneratedUUID_ShouldHaveProperVersion()
-        {
-            var generator = new RandomBasedGenerator();
-            var expectedVersion = 0x40;
+        var generator = new RandomBasedGenerator();
+        var expectedVersion = 0x40;
 
-            var guid = generator.GenerateGuid();
-            var array = guid.ToActuallyOrderedBytes();
+        var guid = generator.GenerateGuid();
+        var array = guid.ToActuallyOrderedBytes();
 
-            Assert.Equal(expectedVersion, array[6] & 0xf0);
-        }
+        Assert.Equal(expectedVersion, array[6] & 0xf0);
     }
 }

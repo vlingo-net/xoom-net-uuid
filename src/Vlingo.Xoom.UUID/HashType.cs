@@ -5,11 +5,10 @@
 // was not distributed with this file, You can obtain
 // one at https://mozilla.org/MPL/2.0/.
 
-namespace Vlingo.Xoom.UUID
+namespace Vlingo.Xoom.UUID;
+
+public enum HashType
 {
-    public enum HashType
-    {
-        Md5 = 1,
-        Sha1 = 2
-    }
+    Md5 = 1,
+    Sha1 = 2
 }

@@ -8,41 +8,40 @@
 using System;
 using System.Security.Cryptography;
 
-namespace Vlingo.Xoom.UUID
+namespace Vlingo.Xoom.UUID;
+
+/// <summary>
+/// Random number based UUID generator according to RFC4122 (version-4)
+/// </summary>
+public class RandomBasedGenerator
 {
+    private readonly RandomNumberGenerator _generator;
+
     /// <summary>
-    /// Random number based UUID generator according to RFC4122 (version-4)
+    /// Creates an instance of random number based UUID generator according to RFC4122 (version-4) using the provided random number generator.
     /// </summary>
-    public class RandomBasedGenerator
+    /// <param name="generator">The random number generator.</param>
+    public RandomBasedGenerator(RandomNumberGenerator generator) => _generator = generator;
+
+    /// <summary>
+    /// Creates an instance of random number based UUID generator according to RFC4122 (version-4). 
+    /// It uses <see cref="RNGCryptoServiceProvider"/> as the random number generator.
+    /// </summary>
+    public RandomBasedGenerator() : this(new RNGCryptoServiceProvider())
     {
-        private readonly RandomNumberGenerator _generator;
+    }
 
-        /// <summary>
-        /// Creates an instance of random number based UUID generator according to RFC4122 (version-4) using the provided random number generator.
-        /// </summary>
-        /// <param name="generator">The random number generator.</param>
-        public RandomBasedGenerator(RandomNumberGenerator generator) => _generator = generator;
+    /// <summary>
+    /// Generates a RFC4122 random number based UUID (version-4)
+    /// </summary>
+    /// <returns></returns>
+    public Guid GenerateGuid()
+    {
+        var data = new byte[16];
+        _generator.GetBytes(data);
 
-        /// <summary>
-        /// Creates an instance of random number based UUID generator according to RFC4122 (version-4). 
-        /// It uses <see cref="RNGCryptoServiceProvider"/> as the random number generator.
-        /// </summary>
-        public RandomBasedGenerator() : this(new RNGCryptoServiceProvider())
-        {
-        }
+        data.AddVariantMarker().AddVersionMarker(UUIDVersion.Random);
 
-        /// <summary>
-        /// Generates a RFC4122 random number based UUID (version-4)
-        /// </summary>
-        /// <returns></returns>
-        public Guid GenerateGuid()
-        {
-            var data = new byte[16];
-            _generator.GetBytes(data);
-
-            data.AddVariantMarker().AddVersionMarker(UUIDVersion.Random);
-
-            return data.ToGuidFromActuallyOrderedBytes();
-        }
+        return data.ToGuidFromActuallyOrderedBytes();
     }
 }

@@ -6,15 +6,14 @@
 // one at https://mozilla.org/MPL/2.0/.
 
 
-namespace Vlingo.Xoom.UUID
+namespace Vlingo.Xoom.UUID;
+
+// ReSharper disable once InconsistentNaming
+public enum UUIDNameSpace
 {
-    // ReSharper disable once InconsistentNaming
-    public enum UUIDNameSpace
-    {
-        None = 0,
-        Dns = 1,
-        Url = 2,
-        Oid = 3,
-        X500 = 4
-    }
+    None = 0,
+    Dns = 1,
+    Url = 2,
+    Oid = 3,
+    X500 = 4
 }

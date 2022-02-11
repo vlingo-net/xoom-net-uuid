@@ -6,11 +6,10 @@
 // one at https://mozilla.org/MPL/2.0/.
 
 
-namespace Vlingo.Xoom.UUID
+namespace Vlingo.Xoom.UUID;
+
+public enum GuidGenerationMode
 {
-    public enum GuidGenerationMode
-    {
-        FasterGeneration = 1,
-        WithUniquenessGuarantee = 2
-    }
+    FasterGeneration = 1,
+    WithUniquenessGuarantee = 2
 }
