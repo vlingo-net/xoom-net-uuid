@@ -29,6 +29,8 @@ jobs:
       run: dotnet build ./src/Vlingo.Xoom.UUID.sln --no-restore
     - name: Test
       id: test
+      with:
+        dotnet-version: 3.1.402
       run: dotnet test ./src/Vlingo.Xoom.UUID.Tests/Vlingo.Xoom.UUID.Tests.csproj --no-build --verbosity normal
     - name: slack - GitHub Actions Slack integration
       uses: act10ns/slack@v1.2.2
