@@ -17,12 +17,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET 6.0.x
-      id: setup-dotnet
+      id: setup-dotnet6
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
     - name: Setup .NET 3.1.x
-        id: setup-dotnet
+        id: setup-dotnet3
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.x
