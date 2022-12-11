@@ -25,9 +25,9 @@ public class RandomBasedGenerator
 
     /// <summary>
     /// Creates an instance of random number based UUID generator according to RFC4122 (version-4). 
-    /// It uses <see cref="RNGCryptoServiceProvider"/> as the random number generator.
+    /// It uses <see cref="RandomNumberGenerator"/> as the random number generator.
     /// </summary>
-    public RandomBasedGenerator() : this(new RNGCryptoServiceProvider())
+    public RandomBasedGenerator() : this(RandomNumberGenerator.Create())
     {
     }
 

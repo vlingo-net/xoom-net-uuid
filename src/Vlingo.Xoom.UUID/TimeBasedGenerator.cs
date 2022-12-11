@@ -17,7 +17,7 @@ namespace Vlingo.Xoom.UUID;
 /// </summary>
 public sealed class TimeBasedGenerator
 {
-    private static readonly RandomNumberGenerator RandomGenerator = new RNGCryptoServiceProvider();
+    private static readonly RandomNumberGenerator RandomGenerator = RandomNumberGenerator.Create();
     private static readonly DateTimeOffset ClockStart = new DateTimeOffset(1582, 10, 15, 0, 0, 0, TimeSpan.Zero);
 
     private readonly byte[] _macAddressBytes;
